@@ -18,7 +18,7 @@ coltypes = {
     "stored": "int",
 }
 
-if "data" not in st.session_state:
+if "data" not in st.session_state or "orig_data" not in st.session_state:
     df = pd.read_csv("data.csv", dtype=coltypes)
     st.session_state["data"] = df
     st.session_state["orig_data"] = df.copy()
@@ -58,6 +58,7 @@ df = st.data_editor(
     df[["thing", "Where", "goal", "stored"]],
     num_rows="dynamic",
     height=20*35,
+    use_container_width=True,
     hide_index=True,
     column_config=column_config)
 
@@ -67,8 +68,8 @@ df["stored"] = df["stored"].astype("int")
 df = df[["thing", "where", "goal", "stored"]]
 
 if not orig_df.equals(df):
-    _, middle, _ = st.columns([0.8, 1, 0.8])
-    if middle.button("Save changes"):
+    _, middle, _ = st.columns(3)
+    if middle.button("  Save changes  ", use_container_width=True):
         stored_df = pd.read_csv("data.csv", dtype=coltypes)
         if not orig_df.equals(stored_df):
             st.toast("**Cannot save: the underlying data was changed.** "

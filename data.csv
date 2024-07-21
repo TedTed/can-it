@@ -1,80 +1,80 @@
-thing,where,goal,stored
-Almond milk (1L),top,2,2
-Sunflower oil (1L),top,1,1
-Rice (1kg),top,5,5
-Risotto rice (1kg),top,1,1
-Jasmine rice (1kg),top,1,1
-Couscous (1kg),top,1,1
-Spaghetti (500g),top,1,1
-Tagliatelle (500g),top,1,1
-Radiatori (500g),top,1,1
-Fusillone (500g),top,1,1
-Penne (500g),top,1,2
-Chinese noodles (500g),top,1,1
-Canned chickpeas (400g),top,12,1
-Canned white beans (400g),top,2,3
-Canned red beans (400g),top,2,2
-Canned black eyed beans (400g),top,2,2
-Canned black beans (400g),top,2,2
-Canned coco beans (400g),top,2,2
-Canned green beans (400g),top,2,2
-Canned refried beans (400g),top,1,1
-Canned crushed tomatoes (400g),top,12,12
-Canned whole tomatoes (400g),top,2,2
-Canned corn (400g),top,2,2
-Tissue box,first,1,1
-Oven paper,first,1,1
-35L trash bags (×10),first,1,1
-Dish soap,first,1,1
-Seitan (500g),first,1,1
-Fine salt (500g),first,1,1
-Coarse salt (1kg),first,1,1
-Dry green lentils (500g),first,1,1
-Dry beluga lentils (500g),first,1,1
-Dry red lentils (500g),first,1,1
-Dry brown lentils (500g),first,1,1
-Dry white beans (500g),first,1,1
-Dry black beans (500g),first,1,1
-Dry red beans (500g),first,1,1
-Dry borlotti beans (500g),first,1,1
-Dry shiitake (200g),first,1,1
-Dry trompettes de la mort (200g),first,1,1
-Dry porcini (200g),first,1,1
-Tahini,first,1,1
-Regular Dijon mustard (400g),first,1,1
-Grainy Dijon mustard (400g),first,1,1
-Capers,first,1,1
-Cornichons,first,1,1
-Anchovies,first,1,1
-Coconut milk (250mL),first,3,3
-Züri sauce,first,1,1
-Miso paste,first,1,1
-Tomato paste,first,1,1
-Dried tomatoes,first,1,1
-Onions,first,10,4
-Red onions,first,3,3
-Shallots,first,5,2
-Garlic,first,5,1
-Whole hazelnuts (200g),third,1,1
-Whole almonds (200g),third,1,1
-Whole walnuts (200g),third,1,1
-Whole pecans (150g),third,1,1
-Whole cashews (200g),third,1,1
-Whole hazelnuts (200g),third,1,1
-Cedar/pine nuts (100g),third,1,1
-Sliced almonds (200g),third,1,0
-Ground almonds (200g),third,2,1
-Ground hazelnuts (200g),third,2,2
-Ground coconut (200g),third,2,2
-White sugar (1kg),third,3,1
-Cane sugar (1kg),third,1,1
-Powder sugar (500g),third,1,1
-Maple syrup (200mL),third,1,1
-Flour (1kg),third,3,2
-Starch,third,1,1
-Breading,third,1,1
-Butter (250g),fridge,1,1
-Cat food,floor,1,1
-Cat litter,floor,2,2
-Regular toilet paper (×12),floor,2,2
-Fancy toilet paper (×12),floor,1,1
+thing,where,goal,stored,Where
+Almond milk (1L),top,2,1,Top of the chest
+Sunflower oil (1L),top,1,1,Top of the chest
+Rice (1kg),top,5,5,Top of the chest
+Risotto rice (1kg),top,1,1,Top of the chest
+Jasmine rice (1kg),top,1,1,Top of the chest
+Couscous (1kg),top,1,1,Top of the chest
+Spaghetti (500g),top,1,1,Top of the chest
+Tagliatelle (500g),top,1,1,Top of the chest
+Radiatori (500g),top,1,1,Top of the chest
+Fusillone (500g),top,1,1,Top of the chest
+Penne (500g),top,1,2,Top of the chest
+Chinese noodles (500g),top,1,1,Top of the chest
+Canned chickpeas (400g),top,12,4,Top of the chest
+Canned white beans (400g),top,2,3,Top of the chest
+Canned red beans (400g),top,2,2,Top of the chest
+Canned black eyed beans (400g),top,2,2,Top of the chest
+Canned black beans (400g),top,2,2,Top of the chest
+Canned borlotti beans (400g),top,2,2,Top of the chest
+Canned green beans (400g),top,2,2,Top of the chest
+Canned refried beans (400g),top,1,1,Top of the chest
+Canned crushed tomatoes (400g),top,12,12,Top of the chest
+Canned whole tomatoes (400g),top,2,2,Top of the chest
+Canned corn (400g),top,2,2,Top of the chest
+Tissue box,first,1,1,Top drawer
+Oven paper,first,1,1,Top drawer
+35L trash bags (×10),first,1,1,Top drawer
+Dish soap,first,1,1,Top drawer
+Seitan (500g),first,1,1,Top drawer
+Coarse salt (1kg),first,1,1,Top drawer
+Dry green lentils (500g),first,1,1,Top drawer
+Dry beluga lentils (500g),first,1,1,Top drawer
+Dry red lentils (500g),first,1,1,Top drawer
+Dry brown lentils (500g),first,1,1,Top drawer
+Dry white beans (500g),first,1,1,Top drawer
+Dry black beans (500g),first,1,1,Top drawer
+Dry red beans (500g),first,1,1,Top drawer
+Dry borlotti beans (500g),first,1,1,Top drawer
+Dry shiitake (200g),first,1,1,Top drawer
+Dry trompettes de la mort (200g),first,1,1,Top drawer
+Dry porcini (200g),first,1,1,Top drawer
+Tahini,first,1,1,Top drawer
+Regular Dijon mustard (400g),first,1,1,Top drawer
+Grainy Dijon mustard (400g),first,1,1,Top drawer
+Capers,first,1,1,Top drawer
+Cornichons,first,1,1,Top drawer
+Anchovies,first,1,1,Top drawer
+Coconut milk (250mL),first,3,3,Top drawer
+Züri sauce,first,1,1,Top drawer
+Miso paste,first,1,1,Top drawer
+Tomato paste,first,1,1,Top drawer
+Dried tomatoes,first,1,1,Top drawer
+Onions,first,10,7,Top drawer
+Red onions,first,3,3,Top drawer
+Shallots,first,5,2,Top drawer
+Garlic,first,5,1,Top drawer
+Whole hazelnuts (200g),third,1,1,Bottom drawer
+Whole almonds (200g),third,1,1,Bottom drawer
+Whole walnuts (200g),third,1,1,Bottom drawer
+Whole pecans (150g),third,1,1,Bottom drawer
+Whole cashews (200g),third,1,1,Bottom drawer
+Whole hazelnuts (200g),third,1,1,Bottom drawer
+Cedar/pine nuts (100g),third,1,1,Bottom drawer
+Sliced almonds (200g),third,1,0,Bottom drawer
+Ground almonds (200g),third,2,1,Bottom drawer
+Ground hazelnuts (200g),third,2,2,Bottom drawer
+Ground coconut (200g),third,2,2,Bottom drawer
+White sugar (1kg),third,3,1,Bottom drawer
+Cane sugar (1kg),third,1,1,Bottom drawer
+Powder sugar (500g),third,1,1,Bottom drawer
+Maple syrup (200mL),third,1,1,Bottom drawer
+Flour (1kg),third,3,2,Bottom drawer
+Starch,third,1,1,Bottom drawer
+Breading,third,1,1,Bottom drawer
+Fine salt (500g),fridge,1,1,Fridge
+Butter (250g),fridge,1,1,Fridge
+Cat food,floor,1,1,Floor / elsewhere
+Cat litter,floor,2,2,Floor / elsewhere
+Regular toilet paper (×12),floor,2,2,Floor / elsewhere
+Fancy toilet paper (×12),floor,1,2,Floor / elsewhere
