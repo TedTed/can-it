@@ -1,4 +1,4 @@
-# Can-it
+# can-it
 
 Tiny cellar management app.
 
