@@ -18,13 +18,13 @@ coltypes = {
     "stored": "int",
 }
 
-if "data" not in st.session_state or "orig_data" not in st.session_state:
+if "df" not in st.session_state or "orig_df" not in st.session_state:
     df = pd.read_csv("data.csv", dtype=coltypes)
-    st.session_state["data"] = df
-    st.session_state["orig_data"] = df.copy()
+    st.session_state["df"] = df
+    st.session_state["orig_df"] = df.copy()
 
-df = st.session_state["data"]
-orig_df = st.session_state["orig_data"]
+df = st.session_state["df"]
+orig_df = st.session_state["orig_df"]
 
 df["Where"] = df["where"].apply(lambda c: categories[c]).astype("category")
 
@@ -76,6 +76,6 @@ if not orig_df.equals(df):
                      "Save your changes using copy/paste, then reload the page.")
         else:
             df.sort_values("where", kind="stable").to_csv("data.csv", index=False)
-            del st.session_state["data"]
+            del st.session_state["df"]
             st.rerun()
 
