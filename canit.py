@@ -137,7 +137,7 @@ def view(desktop):
         # Ingredient name and location (for mobile)
         location = categories[row['where']]
         if desktop:
-            thing.markdown(f"**{row['thing']}**")
+            thing.markdown(f"{row['thing']}")
         else:
             thing.markdown(f"##### {row['thing']}")
             thing.markdown(f"({location})")
