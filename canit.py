@@ -134,11 +134,13 @@ def view(desktop):
         thing, amount, addremove = (
             st.columns(cols, vertical_alignment="center") if desktop
             else (c, c, st))
-        # Ingredient name
+        # Ingredient name and location (for mobile)
+        location = categories[row['where']]
         if desktop:
-            thing.markdown(f"{row['thing']}")
+            thing.markdown(f"**{row['thing']}**")
         else:
             thing.markdown(f"##### {row['thing']}")
+            thing.markdown(f"({location})")
         # Add/remove buttons
         add, remove = addremove.columns(2)
         if add.button(" +1 ", key=f"add_{i}", on_click=keep_view, use_container_width=True):
@@ -151,7 +153,7 @@ def view(desktop):
         d = s-row['goal']
         text = ""
         if desktop:
-            text += f"##### {g}  /  {s}  /  "
+            text += f"**{g}  /  {s}  /  "
         else:
             text += f"**Need {g}, got {s}, diff  "
         if d < 0:
@@ -160,8 +162,7 @@ def view(desktop):
             text += f":orange-background[{d}   🤔]"
         else:
             text += f":green-background[0  🎉]"
-        if not desktop:
-            text += "**"
+        text += "**"
         amount.markdown(text)
 
     df.to_csv("data.csv", index=False)
