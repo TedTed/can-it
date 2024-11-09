@@ -2,80 +2,88 @@ import pandas as pd
 import streamlit as st
 from pandas.api.types import CategoricalDtype
 
-categories={
+locations = ["top", "first", "third", "fridge", "floor"]
+location_names={
     "top": "Top of the chest",
     "first": "Top drawer",
     "third": "Bottom drawer",
     "fridge": "Fridge",
     "floor": "Floor / elsewhere"}
-categories_rev={v: k for k, v in categories.items()}
 
-wheretype = CategoricalDtype(categories.keys(), ordered=True)
-coltypes = {
-    "thing": "string",
-    "where": wheretype,
-    "goal": "int",
-    "stored": "int",
-}
+if "data" not in st.session_state:
+    st.session_state["data"] = pd.read_csv("data.csv")
+df = st.session_state["data"]
 
-if "df" not in st.session_state or "orig_df" not in st.session_state:
-    df = pd.read_csv("data.csv", dtype=coltypes)
-    st.session_state["df"] = df
-    st.session_state["orig_df"] = df.copy()
+if "current" not in st.session_state:
+    st.session_state["current"] = -1
 
-df = st.session_state["df"]
-orig_df = st.session_state["orig_df"]
+def validate(thing, where, need, got):
+    if "," in thing:
+        st.error("Commas are forbidden in things")
+        return False
+    if where not in locations:
+        st.error("Location invalid. (How did this happen? Tell Damien.)")
+        return False
+    if need < 1:
+        st.error("Minimum required value is 1. (How did this happen? Tell Damien.)")
+        return False
+    if got < 0:
+        st.error("Minimum stored value is 0. (How did this happen? Tell Damien.)")
+        return False
+    return True
 
-df["Where"] = df["where"].apply(lambda c: categories[c]).astype("category")
+for i, row in df.iterrows():
+    left, middle, right = st.columns([4, 1, 1], vertical_alignment="center")
+    left.markdown(f"**{row['thing']}** ({location_names[row['where']]}): need {row['goal']}, got {row['stored']}")
+    if middle.button("Edit", key=f"add_{i}", use_container_width=True):
+        st.session_state["current"] = i
+    if st.session_state["current"] == i:
+        with st.form(f"form_{i}"):
+            thing = st.text_input(
+                label="Thing", value=row['thing'], key=f"thing_{i}")
+            where = st.selectbox(
+                "Where",
+                options=locations,
+                index=locations.index(row['where']),
+                format_func=lambda loc: location_names[loc],
+                key=f"where_{i}")
+            need = st.number_input(
+                "Need", value=row['goal'], min_value=1, key=f"goal_{i}")
+            got = st.number_input(
+                "Got", value=row['stored'], min_value=0, key=f"stored_{i}")
+            if st.form_submit_button("Save", use_container_width=True) and validate(thing, where, need, got):
+                st.session_state["data"].at[i, "thing"] = thing
+                st.session_state["data"].at[i, "where"] = where
+                st.session_state["data"].at[i, "goal"] = need
+                st.session_state["data"].at[i, "stored"] = got
+                st.session_state["current"] = -1
+                st.rerun()
+        pass
+    if right.button("Delete", key=f"delete_{i}", use_container_width=True):
+        df.drop(i, inplace=True)
+        st.rerun()
 
-column_config = {
-    "thing": st.column_config.TextColumn(
-        label="Thing",
-        width="medium",
-        required=True,
-    ),
-    "Where": st.column_config.SelectboxColumn(
-        label="Category",
-        required=True,
-    ),
-    "goal": st.column_config.NumberColumn(
-        label="Goal",
-        required=True,
-        default=1,
-        min_value=0,
-        step=1,
-    ),
-    "stored": st.column_config.NumberColumn(
-        label="Stored",
-        required=True,
-        default=0,
-        min_value=0,
-        step=1,
-    )
-}
-
-df = st.data_editor(
-    df[["thing", "Where", "goal", "stored"]],
-    num_rows="dynamic",
-    height=20*35,
-    use_container_width=True,
-    hide_index=True,
-    column_config=column_config)
-
-df["where"] = df["Where"].apply(lambda c: categories_rev[c]).astype(wheretype)
-df["goal"] = df["goal"].astype("int")
-df["stored"] = df["stored"].astype("int")
-df = df[["thing", "where", "goal", "stored"]]
-
-if not orig_df.equals(df):
-    _, middle, _ = st.columns(3)
-    if middle.button("  Save changes  ", use_container_width=True):
-        stored_df = pd.read_csv("data.csv", dtype=coltypes)
-        if not orig_df.equals(stored_df):
-            st.toast("**Cannot save: the underlying data was changed.** "
-                     "Save your changes using copy/paste, then reload the page.")
-        else:
-            df.sort_values("where", kind="stable").to_csv("data.csv", index=False)
-            del st.session_state["df"]
+if st.button("Add new", key="new", use_container_width=True):
+    st.session_state["current"] = "new"
+if st.session_state["current"] == "new":
+    with st.form(f"form_new"):
+        thing = st.text_input(
+            label="Thing", key=f"thing_new")
+        where = st.selectbox(
+            "Where",
+            options=locations,
+            index=None,
+            format_func=lambda loc: location_names[loc],
+            key=f"where_new")
+        need = st.number_input(
+            "Need", value=1, min_value=1, key=f"goal_new")
+        got = st.number_input(
+            "Got", value=0, min_value=0, key=f"stored_new")
+        if st.form_submit_button("Save", use_container_width=True) and validate(thing, where, need, got):
+            st.session_state["data"] = pd.concat(
+                [df, pd.DataFrame([[thing, where, need, got]], columns=df.columns)],
+                ignore_index=True)
+            st.session_state["current"] = -1
             st.rerun()
 
+df.to_csv("data.csv", index=False)
